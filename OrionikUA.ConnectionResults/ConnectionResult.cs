@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OrionikUA.DbResults
+namespace OrionikUA.ConnectionResults
 {
     public class ConnectionResult
     {

@@ -6,6 +6,7 @@
     <Company>OrionikUA</Company>
     <Product>ConnectionResults</Product>
     <RepositoryUrl>https://github.com/OrionikUA/net-ConnectionResults</RepositoryUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>
