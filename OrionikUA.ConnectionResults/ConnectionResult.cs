@@ -20,6 +20,7 @@ namespace OrionikUA.ConnectionResults
         public static ConnectionResult Successful() => new ConnectionResult(true);
         public static ConnectionResult NotSuccessful(Exception exception) => new ConnectionResult(false, hasException: true, exception: exception);
         public static ConnectionResult NotSuccessful(string message) => new ConnectionResult(false, message);
+        public static ConnectionResult NotSuccessful(ConnectionResult result) => new ConnectionResult(false, result.Message, result.HasException, result.Exception);
     }
 
     public class ConnectionResult<T> : ConnectionResult
@@ -35,5 +36,6 @@ namespace OrionikUA.ConnectionResults
         public static ConnectionResult<T> SuccessfulObject(T resultObject) => new ConnectionResult<T>(resultObject);
         public static ConnectionResult<T> NotSuccessfulObject(Exception exception) => new ConnectionResult<T>(isSuccessful: false, hasException: true, exception: exception);
         public static ConnectionResult<T> NotSuccessfulObject(string message) => new ConnectionResult<T>(isSuccessful: false, message: message);
+        public static ConnectionResult<T> NotSuccessfulObject(ConnectionResult result) => new ConnectionResult<T>(isSuccessful:false, message:result.Message, hasException:result.HasException, exception:result.Exception);
     }
 }
