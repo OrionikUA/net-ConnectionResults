@@ -38,4 +38,21 @@ namespace OrionikUA.ConnectionResults
         public static ConnectionResult<T> NotSuccessfulObject(string message) => new ConnectionResult<T>(isSuccessful: false, message: message);
         public static ConnectionResult<T> NotSuccessfulObject(ConnectionResult result) => new ConnectionResult<T>(isSuccessful:false, message:result.Message, hasException:result.HasException, exception:result.Exception);
     }
+
+    public class ConnectionResult<T1, T2>
+    {
+        public T1 ResultObject { get; }
+        public T2 ErrorObject { get; }
+        public bool IsSuccessful { get; }
+
+        internal ConnectionResult(bool isSuccessful, T1 resultObject = default, T2 errorObject = default)
+        {
+            IsSuccessful = isSuccessful;
+            ResultObject = resultObject;
+            ErrorObject = errorObject;
+        }
+
+        public static ConnectionResult<T1, T2> Successful(T1 resultObject) => new ConnectionResult<T1, T2>(true, resultObject: resultObject);
+        public static ConnectionResult<T1, T2> NotSuccessful(T2 errorObject) => new ConnectionResult<T1, T2>(false, errorObject: errorObject);
+    }
 }
